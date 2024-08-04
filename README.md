@@ -3,7 +3,7 @@
 
 This is part of an experiment in estimating a perceived brightness while remaining in integer math and using bitshifts to maximize performance.
 
-This repo is based on [this Gist by Andrew Somers](https://gist.github.com/Myndex/04dd7d3143806ad050bb946d667e889f#file-brintness-md), discussing a computationally fast/efficient, integer-based, perceptually semi-uniform lightness/brightness calculation.
+This repo is based on [this Gist by Andrew Somers](https://gist.github.com/Myndex/04dd7d3143806ad050bb946d667e889f#file-brintness-md), discussing a computationally fast/efficient, integer-based, perceptually semi-uniform lightness/brightness calculation. And a fast/efficient, integer-based means of linearizing.
 
 ## The Issue
 
@@ -13,13 +13,13 @@ This is computationally expensive. And even then, we generally miss factors such
 
 ### The Unbearable Lightness of Perception
 
-So if the commonly accepted methods lack inherent accuracy do to disregarding certain factors, and given that RGB color spaces are often encoded with a gamma or transfer curve of some type, which while different than some lightness curves, still "in the ballpark" in terms of perception.
+So if the commonly accepted methods lack inherent accuracy, do to disregarding certain factors, and given that RGB color spaces are often encoded with a gamma or transfer curve of some type, which while different than some lightness curves, still "in the ballpark" in terms of perception.
 
-And let's not forget that the human vision system has its own built-in gain control that makes measuring lightness perception a frustrating task that is still a matter of emerging science.
+And let's not forget that the human vision system has its own built-in gain control that makes measuring lightness perception a frustrating task that is still a matter of emerging science—well, we are chasing our tails here a non-zero portion of the time. And if the tail-chasing results in perfromance bottlenecks, then we are getting the worst of the worst.
 
 ### How Fast Does Red Weigh?
 
-Light in the world follows simple linear math. That is, if you have 100 photons of light, and triple it, you then have 300 photons of light. Human vision does not perceive light linearly however, a given change in light value will result in a larger or smaller change in perceived lightness, depending on a number of contextual factors.
+Light _"in the world"_ follows simple linear math. That is, if you have 100 photons of light, and triple it, you then have 300 photons of light. Human vision does not perceive light linearly however, a given change in light value will result in a larger or smaller change in perceived lightness, depending on a number of contextual factors.
 
 And, light does not have a "color", as color is only a perception of our vision system. But light does have different wavelengths or frequencies, like musical notes on a piano for want of an analogy. But also, human vision is most sensitive to a very narrow range of "middle notes", the middle wavelengths we identify as green, with sensitivity rapidly dropping off for shorter (blue) or longer (red) wavelengths.
 
